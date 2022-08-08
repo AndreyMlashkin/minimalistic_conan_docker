@@ -11,6 +11,7 @@ gcc \
 g++ && \
 conan install gcc/10.2.0@ --build missing && \
 conan install cmake/3.23.1@ --build missing && \
+conan remove "*" -p -s && \
 apk del make gcc g++
 
 # test if image is valid; to be deleted:

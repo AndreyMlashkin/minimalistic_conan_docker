@@ -9,6 +9,8 @@ compiler.libcxx=libstdc++11
 os=Linux
 os_build=Linux
 [options]
+*:shared=False
 [build_requires]
 gcc/10.2.0
+cmake/3.23.1
 [env]
