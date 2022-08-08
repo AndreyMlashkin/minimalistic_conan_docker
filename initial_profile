@@ -11,5 +11,6 @@ compiler.cppstd=17
 [options]
 *:shared=False
 [build_requires]
+cmake/3.23.1
 [env]
 
