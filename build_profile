@@ -10,7 +10,7 @@ os=Linux
 os_build=Linux
 [options]
 *:shared=False
+cmake:with_openssl=False
 [build_requires]
 gcc/10.2.0
-cmake/3.23.1
 [env]
