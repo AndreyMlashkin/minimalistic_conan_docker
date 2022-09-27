@@ -18,8 +18,6 @@ RUN conan install requirements.txt --build missing -g virtualenv
 RUN apt-get remove -y make gcc g++
 
 COPY host_profile /root/.conan/profiles/host_profile
-RUN conan config set general.cmake_generator=Ninja
-RUN conan config set tools.cmake.cmaketoolchain=Ninja
 
 RUN ls -l -a && chmod +x activate.sh && . ./activate.sh && \
 conan install zlib/1.2.12@ --build zlib -pr:b=default -pr:h=host_profile --build missing 
