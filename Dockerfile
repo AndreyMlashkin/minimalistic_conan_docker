@@ -1,22 +1,32 @@
-FROM alpine:latest
+FROM ubuntu:22.04
 
-RUN apk add --no-cache linux-headers
-RUN apk add --no-cache py3-pip
+RUN \
+  apt-get update && \
+  apt-get install -y python3 python3-pip
+
 RUN pip3 install conan
 
-COPY initial_profile /root/.conan/profiles/default
-
-#TODO: unite commands from "apk add" to "apk del" into one to have a small docker layer. 
-RUN apk add --no-cache make \
+RUN apt-get update && \
+apt-get install -y make \
 gcc \
 g++ \
 cmake
 
-COPY build_profile /root/.conan/profiles/gcc_build
-RUN conan new mypackage/1.0 -t
-RUN conan create . --build missing --profile:host=gcc_build --profile:build=default
+COPY initial_profile /root/.conan/profiles/default
+COPY requirements.txt requirements.txt
+RUN conan install requirements.txt --build missing -g virtualenv
+RUN apt-get remove -y make gcc g++
 
-RUN apk del make gcc g++
+COPY host_profile /root/.conan/profiles/host_profile
+RUN conan config set general.cmake_generator=Ninja
+RUN conan config set tools.cmake.cmaketoolchain=Ninja
+
+RUN ls -l -a && chmod +x activate.sh && . ./activate.sh && \
+ls && \
+cat activate.sh && \
+cat environment.sh.env && \
+echo $PATH && \
+conan install zlib/1.2.12@ --build zlib -pr:b=default -pr:h=host_profile --build missing 
 
 ENTRYPOINT /bin/sh
 

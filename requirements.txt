@@ -1,0 +1,5 @@
+[requires]
+gcc/10.2.0
+ninja/1.11.0
+cmake/3.24.1
+
