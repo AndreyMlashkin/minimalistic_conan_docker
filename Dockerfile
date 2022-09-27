@@ -22,10 +22,6 @@ RUN conan config set general.cmake_generator=Ninja
 RUN conan config set tools.cmake.cmaketoolchain=Ninja
 
 RUN ls -l -a && chmod +x activate.sh && . ./activate.sh && \
-ls && \
-cat activate.sh && \
-cat environment.sh.env && \
-echo $PATH && \
 conan install zlib/1.2.12@ --build zlib -pr:b=default -pr:h=host_profile --build missing 
 
 ENTRYPOINT /bin/sh

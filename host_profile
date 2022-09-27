@@ -12,7 +12,7 @@ os_build=Linux
 cmake:with_openssl=False
 [build_requires]
 gcc/10.2.0
-ninja/1.11.0
+make/4.2.1
 cmake/3.24.1
 [env]
-CONAN_CMAKE_GENERATOR=Ninja
+CMAKE_MAKE_PROGRAM=make

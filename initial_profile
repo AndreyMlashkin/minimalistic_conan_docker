@@ -13,5 +13,4 @@ compiler.cppstd=17
 cmake:with_openssl=False
 [build_requires]
 [env]
-CMAKE_GENERATOR=Ninja
-
+CMAKE_MAKE_PROGRAM=make
