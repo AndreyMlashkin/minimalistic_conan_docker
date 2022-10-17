@@ -12,7 +12,7 @@ os_build=Linux
 cmake:with_openssl=False
 [build_requires]
 gcc/10.2.0
-make/4.2.1
+make/4.3
 cmake/3.24.1
 [env]
 CMAKE_MAKE_PROGRAM=make

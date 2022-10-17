@@ -1,5 +1,5 @@
 [tool_requires]
 gcc/10.2.0
-make/4.2.1
+make/4.3
 cmake/3.24.1
 
