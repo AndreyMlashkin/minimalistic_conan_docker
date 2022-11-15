@@ -6,13 +6,9 @@ compiler.version=10.2
 compiler.cppstd=17
 compiler.libcxx=libstdc++11
 os=Linux
-os_build=Linux
 [options]
 *:shared=False
-cmake:with_openssl=False
-[build_requires]
+[tool_requires]
 gcc/10.2.0
 make/4.3
 cmake/3.24.1
-[env]
-CMAKE_MAKE_PROGRAM=make

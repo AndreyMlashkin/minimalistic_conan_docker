@@ -16,7 +16,7 @@ cmake
 # compile build tools with conan:
 COPY build_profile /root/.conan/profiles/build_profile
 COPY requirements.txt requirements.txt
-RUN conan install requirements.txt --build missing -g virtualenv -pr build_profile
+RUN conan install requirements.txt --build missing -g virtualenv --profile:build=build_profile --profile:host=build_profile
 
 # remove initial build tools:
 RUN apt-get remove -y make gcc g++
@@ -24,7 +24,10 @@ RUN apt-get remove -y make gcc g++
 # try to compile using tools from conan:
 COPY host_profile /root/.conan/profiles/host_profile
 RUN ls -l -a && chmod +x activate.sh && . ./activate.sh && \
-conan install zlib/1.2.12@ --build zlib -pr:b=build_profile -pr:h=host_profile --build missing
+cmake --help && \
+echo $CC && \
+echo $CXX && \
+conan install zlib/1.2.13@ --build zlib -pr:b=host_profile -pr:h=host_profile --build missing
 
 ENTRYPOINT /bin/sh
 
