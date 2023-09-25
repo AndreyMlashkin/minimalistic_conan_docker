@@ -1,5 +1,5 @@
 [tool_requires]
 gcc/12.2.0
-make/4.3
-cmake/3.24.2
+make/4.4
+cmake/3.27.5
 gmp/6.3.0
